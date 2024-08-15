@@ -1,0 +1,199 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #000;
+    --second-color: #fff;
+    --clock-bg-color: #f5f5dc;
+    --clock-border-color: #8b4513;
+}
+
+html {
+    transition: all 0.5s ease-in;
+}
+
+html.dark {
+    --primary-color: #fff;
+    --secondary-color: #333;
+}
+
+html.dark {
+    background-color: #111;
+    color: var(--primary-color);
+}
+
+body {
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* Estilo del botón para cambiar entre modos */
+.toggle {
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.toggle:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+html.dark .toggle {
+    background-color: #333;
+    color: #fff;
+}
+
+html.dark .toggle:hover {
+    background-color: #444;
+}
+
+.clock-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo de la esfera del reloj */
+.clock {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    background-color: var(--clock-bg-color);
+    border: 4px solid var(--clock-border-color);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo general de las agujas del reloj */
+.needle {
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 65px;
+    width: 3px;
+    transform-origin: bottom center;
+    /* Rotación alrededor del centro inferior */
+    transition: all 0.5s ease-in linear;
+}
+
+
+.needle.hour {
+    background-color: #000;
+    height: 65px;
+    width: 3px;
+    transform: translate(-50%, -100%) rotate(0deg);
+}
+
+.needle.minute {
+    background-color: #000;
+    height: 100px;
+    width: 3px;
+    transform: translate(-50%, -100%) rotate(0deg);
+}
+
+
+.needle.second {
+    background-color: #e74c3c;
+    height: 100px;
+    width: 2px;
+    transform: translate(-50%, -100%) rotate(0deg);
+}
+
+
+.center-point {
+    background-color: #e74c3c;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.center-point::after {
+    content: '';
+    background-color: var(--primary-color);
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.time {
+    font-size: 60px;
+}
+
+.date {
+    color: #aaa;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.date .circle {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 50%;
+    height: 18px;
+    width: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 18px;
+    transition: all 0.5s ease-in;
+    font-size: 12px;
+}
+
+.time-ny {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #aaa;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.time-ny .circle {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 50%;
+    height: 18px;
+    width: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 18px;
+    transition: all 0.5s ease-in;
+    font-size: 12px;
+}
+
+.dark .time-ny {
+    color: #fff;
+}
